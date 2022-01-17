@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML video</title>
+    <link rel="stylesheet" href="main.css"/>
+    <style>
+        video{
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML video element</h1>
+    </header>
+    <main>
+        <video controls id="video" muted >
+             <source src="./videos/lion-sample.webm" type="video/webm"/>
+             <source src="./videos/lion-sample.ogv" type="video/ogv"/>
+             <source src="./videos/lion-sample (1).mp4" type="video/mp4"/>
+             <source src="./videos/lion-sample.3gp" type="video/.3gp"/>
+
+             <track default 
+             src="./videos/lion1.vtt" 
+             kind="captions" 
+             srclang="en"
+             label="English Captions"/>
+             <p> <a href="" download>Download the Video</a> </p>
+        </video>
+        <br/>
+            <button id="btnPlay" class="control">Play</button><br/>
+            <button id="btnPaws" class="control">Pause</button><br/>
+            <button id="btnStop" class="control">Stop</button><br/>
+            <button id="btnRew" class="control">Rewind</button><br/>
+            <button id="btnFF" class="control">Fast-forward</button>
+        <br/>
+        <script>
+            let vid;
+            document.addEventListener('DOMContentload', init);
+            
+            function init() {
+                document.getElementById('btnPlay').addEventListener('click', play);
+                document.getElementById('btnPaws').addEventListener('click', paws);
+                document.getElementById('btnStop').addEventListener('click', stop);
+                document.getElementById('btnRew').addEventListener('click', rew);
+                document.getElementById('btnFF').addEventListener('click', ff);
+                vid = document.getElementById('video');
+                console.log(vid);
+                console.log({vid});
+                let mediaType = vid.type;
+                let str = vid.canPlayType("video/mp4");
+                console.log(str);
+                vid.volume = 0.9; //0 - 1
+            }
+        </script>
+    </main>
+</body>
+</html>
