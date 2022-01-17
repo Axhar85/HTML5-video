@@ -83,6 +83,42 @@
                 console.log( vid.currentTime, "of", vid.duration, "seconds played");
                 onsole.log('video is paused. No Promise here');
         }
+        function stop(ev) {
+            vid.pause();
+            console.log(vid.currentTime);
+            vid.currentTime= 0;
+        }
+
+        function rew(ev){
+            console.log( vid.currentTime);
+            if( ! vid.fastSeek ){
+                vid.currentTime -= 20;
+            }else{
+                vid.fastSeek(-20)
+                .then(()=>{
+                    console.log('Video skipped forward 10 seconds')
+                })
+                .catch(err=>{
+                    console.log({err});
+                })
+            }
+            console.log( vid.currentTime);
+        }
+        function ff(ev){
+            console.log( vid.currentTime);
+            if( ! vid.fastSeek ){
+                vid.currentTime += 20;
+            }else{
+                vid.fastSeek(20)
+                .then(()=>{
+                    console.log('Video skipped forward 10 seconds')
+                })
+                .catch(err=>{
+                    console.log({err});
+                })
+            }
+            console.log( vid.currentTime);
+        }
         </script>
     </main>
 </body>
